@@ -1,16 +1,25 @@
-import {connect} from 'react-redux'
+import { connect } from 'react-redux'
 import Home from './../components/Home'
-import {getData} from './../actions'
+import { getData } from './../actions'
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        getData: () => dispatch(getData())
-    }
-};
+
+
+const mapStateToProps = (state, ownProps) => {
+  return {
+    data: state.informationData.data,
+  }
+}
+
+const mapDispatchToProps = (dispatch, ownProps) => {
+  return {
+    getData: () =>{
+      dispatch(getData())}
+  }
+}
 
 const HomePage = connect(
-    () => {},
-    mapDispatchToProps
-)(Home);
+  mapStateToProps,
+  mapDispatchToProps
+)(Home)
 
-export default HomePage;
+export default HomePage
